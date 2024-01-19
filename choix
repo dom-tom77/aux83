@@ -1,0 +1,9 @@
+#! /bin/bash
+echo "Alors, heureux de faire du Linux ?"
+read rep
+
+case $rep in
+	o|O)	echo "Bravo";;
+	n|N)	echo "Le chocolat est un anti-dépresseur...";;
+	*)	echo "Erreur de saisie";;
+esac
