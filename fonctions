@@ -1,0 +1,89 @@
+function fct_ad () {
+	while [[ $i -gt 0 ]]; do
+		rd1=$((RANDOM%99))
+		rd2=$((RANDOM%99))
+		let sol=$rd1+$rd2
+		echo -n "$rd1+$rd2="
+		read rep
+		if [[ $rep = $sol ]]; then
+			echo "Bravo"
+			let points_ad++
+		else 
+			echo "Perdu, la bonne réponse était : $sol"
+		fi 
+		let i--
+	done
+	echo "Votre score est de $points_ad"
+	sleep 3
+}
+
+function fct_sous() {
+	while [[ $i -gt 0 ]]; do
+		rd1=$((RANDOM%99))
+		rd2=$((RANDOM%99))
+			if [[ $rd1 -ge $rd2 ]]; then
+				let sol=$rd1-$rd2
+				echo -n "$rd1-$rd2="
+				read rep
+			else
+				let sol=$rd2-$rd1
+				echo -n "$rd2-$rd1="
+				read rep
+			fi 
+		if [[ $rep = $sol ]]; then
+			echo "Bravo"
+			let points_sous++
+		else 
+			echo "Perdu, la bonne réponse était : $sol"
+		fi 
+		let i--
+	done
+	echo "Votre score est de $points_sous" 
+	sleep 3
+} 
+
+function fct_multi () {
+	while [[ $i -gt 0 ]]; do
+		rd1=$((RANDOM%9))
+		rd2=$((RANDOM%9))
+		let sol=$rd1*$rd2
+		echo -n "$rd1x$rd2="
+		read rep
+		if [[ $rep = $sol ]]; then
+			echo "Bravo"
+			let points_multi++
+		else 
+			echo "Perdu, la bonne réponse était : $sol"
+		fi 
+		let i--
+	done
+	echo "Votre score est de $points_multi"
+	sleep 3
+}
+
+function fct_div () {
+	while [[ $i -gt 0 ]]; do
+		rd1=$((RANDOM%99))
+		rd2=$((RANDOM%99))
+		let sol=$rd1*$rd2
+		echo -n "$sol/$rd2="
+		read rep
+		if [[ $rep = $rd1 ]]; then
+			echo "Bravo"
+			let points_div++
+		else 
+			echo "Perdu, la bonne réponse était : $rd1"
+		fi 
+		let i--
+	done
+	echo "Votre score est de $points_div"
+	sleep 3
+}
+
+function fct_points () { 
+	let score=($points_ad+$points_sous+$points_multi+$points_div)
+	echo "Votre score est de $score" 
+	exit 0
+}
+
+
